@@ -4,6 +4,7 @@ TraceMoe
 [![Version 1.0.0](https://img.shields.io/badge/stable-1.0.0-brightgreen.svg "Version 1.0.0")](https://github.com/anysz/TraceMoe) [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT) [![Supported python versions: 3.6](https://img.shields.io/badge/python-3.6-green.svg "Supported python versions: 3.6")](https://www.python.org/download/releases/3.6/)
 
 The other version of anime screenshot finder ;)
+**Not yet compatible for python2** 
 
 Refrence
 ----
