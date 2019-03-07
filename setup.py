@@ -2,10 +2,10 @@ from setuptools import find_packages, setup
 import tracemoe
 
 install_requires = [
-    'requests',
+    "requests",
 ]
 packages = [
-    'tracemoe'
+    "tracemoe"
 ]
 
 setup(
