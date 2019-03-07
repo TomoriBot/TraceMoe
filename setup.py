@@ -10,7 +10,7 @@ packages = [
 
 setup(
     name="TraceMoe",
-    version=tracemoe.__version__,
+    version="1.0.0",
     description="Search screenshot of anime and reverse it!",
     author="Anysz, Soruly, Fauzanardh",
     author_email="fauzanardh@gmail.com",
