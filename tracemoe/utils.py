@@ -69,6 +69,7 @@ def downloadFile(url, temp_path="temp.dat", saveFile=True, **kwargs):
         headers = {"Accept-Encoding": None}
     __b = b''
     try:
+        notContentLength = False
         try:
             contentLength = int(requests.head(url, headers=headers).headers["Content-Length"])
         except KeyError:
