@@ -162,6 +162,9 @@ class AniInfo(object):
 
     def getMatchInfo(self, index):
         return MatchInfo(self.data["docs"][index])
+                                 
+    def getAllInfo(self):
+        return [MatchInfo(data) for data in self.data["docs"]]
 
 
 class Search(AniInfo):
