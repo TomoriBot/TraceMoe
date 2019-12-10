@@ -189,7 +189,7 @@ class AniInfo(object):
                                  
     def getAnimes(self):
         animes = []
-        for info in sorted(self.getAllInfo(), key=lambda k: k.diff, reverse=True):
+        for info in sorted(self.getAllInfo(), key=lambda k: k.diff, reverse=False):
             info.getInfo()
             animes.append({
                 "title": info.title,
@@ -200,7 +200,7 @@ class AniInfo(object):
                 "preview": info.thumbnail_preview,
                 "episode": info.episode,
                 "url": info.anime_url,
-                "diff": round(info.diff, 2),
+                "similarity": round(100.0 - info.diff, 1),
                 "duration": get_duration(info.start, info.end)
             })
         return animes
