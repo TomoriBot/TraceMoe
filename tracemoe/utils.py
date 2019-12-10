@@ -80,19 +80,19 @@ def downloadFile(url, temp_path="temp.dat", saveFile=True, **kwargs):
 #                 print(f"Downloading file with size: {(contentLength/1024/1024):.3f} MB")
             for chunk in fp.iter_content(chunk_size=1024*100):
                 __b += chunk
-                if notContentLength:
-                    printData = f"Download in progress{'.'*index} \r"
-                    printLen = len(printData)
-                    sys.stdout.write(printData)
-                    sys.stdout.flush()
-                    index += 1
-                else:
-                    printData = f"Download progress: {((len(__b)/contentLength)*100):.3f}% \r"
-                    printLen = len(printData)
-                    sys.stdout.write(printData)
-                    sys.stdout.flush()
-        printData = "Download finished."
-        padLen = printLen - len(printData)
+#                 if notContentLength:
+#                     printData = f"Download in progress{'.'*index} \r"
+#                     printLen = len(printData)
+#                     sys.stdout.write(printData)
+#                     sys.stdout.flush()
+#                     index += 1
+#                 else:
+#                     printData = f"Download progress: {((len(__b)/contentLength)*100):.3f}% \r"
+#                     printLen = len(printData)
+#                     sys.stdout.write(printData)
+#                     sys.stdout.flush()
+#         printData = "Download finished."
+#         padLen = printLen - len(printData)
 #         print(f"{printData}{' '*padLen}")
         if saveFile:
             with open(temp_path, 'wb+') as fp:
