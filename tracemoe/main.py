@@ -189,7 +189,7 @@ class AniInfo(object):
                                  
     def getAnimes(self):
         animes = []
-        for info in sorted(self.getAllInfo(), key=k: lambda k.diff, reverse=True):
+        for info in sorted(self.getAllInfo(), key=lambda k: k.diff, reverse=True):
             info.getInfo()
             animes.append({
                 "title": info.title,
