@@ -8,13 +8,17 @@ from datetime import datetime
 
 def get_duration(start, end):
     try:
-        (dt, micro) = datetime.fromtimestamp(start).strftime('%H:%M:%S.%f').split('.')
-        start = "%s.%02d" % (dt, int(micro) / 10000)
+        start = int(start)
+        hours, remainder = divmod(start, 3600)
+        minutes, seconds = divmod(remainder, 60)
+        start = '{:02}:{:02}:{:02}'.format(int(hours), int(minutes), int(seconds))
     except:
         start = "?"
     try:
-        (dt, micro) = datetime.fromtimestamp(end).strftime('%H:%M:%S.%f').split('.')
-        end = "%s.%02d" % (dt, int(end) / 10000)
+        end = int(end)
+        hours, remainder = divmod(end, 3600)
+        minutes, seconds = divmod(remainder, 60)
+        end = '{:02}:{:02}:{:02}'.format(int(hours), int(minutes), int(seconds))
     except:
         start = "?"
     return "{} - {}".format(start, end)
