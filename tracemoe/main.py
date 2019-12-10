@@ -114,6 +114,7 @@ class MatchInfo(object):
             self.token = data.get("token", None)
             self.tokenThumb = data.get("tokenthumb", None)
             self.diff = data.get("diff", None)
+            self.similarity = round(data.get("similarity", 0.0), 2)
             self.title = data.get("title", "?")
             self.title_native = data.get("title_native", "?")
             self.title_chinese = data.get("title_chinese", "?")
@@ -200,6 +201,7 @@ class AniInfo(object):
                 "preview": info.thumbnail_preview,
                 "episode": info.episode,
                 "url": info.anime_url,
+                "similarity": info.similarity,
                 "duration": get_duration(info.start, info.end)
             })
         return animes
