@@ -193,7 +193,7 @@ class Search(AniInfo):
         self.data = None
         if url:
             if useImageProxy:
-                print("using proxy")
+#                 print("using proxy")
                 self.searchUsingUrl(f"{self.host['imgproxy']}/imgproxy?url={url}", **kwargs)
             else:
                 self.searchUsingUrl(url, **kwargs)
