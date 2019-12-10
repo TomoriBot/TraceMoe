@@ -59,7 +59,7 @@ def sendGet(url, **kwargs):
 
 
 def downloadFile(url, temp_path="temp.dat", saveFile=True, **kwargs):
-    print(f"Fetching {url}")
+#     print(f"Fetching {url}")
     headers = kwargs.pop("headers", None)
     timeout = kwargs.pop("timeout", 60)
     printLen = 0
