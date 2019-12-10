@@ -94,9 +94,9 @@ def downloadFile(url, temp_path="temp.dat", saveFile=True, **kwargs):
 #         printData = "Download finished."
 #         padLen = printLen - len(printData)
 #         print(f"{printData}{' '*padLen}")
-        if saveFile:
-            with open(temp_path, 'wb+') as fp:
-                fp.write(__b)
+#         if saveFile:
+#             with open(temp_path, 'wb+') as fp:
+#                 fp.write(__b)
         return __b
     except Exception as e:
         raise exceptions.TraceException("Download failed.", f"Reason: {str(e)}")
