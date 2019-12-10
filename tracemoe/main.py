@@ -2,6 +2,22 @@ from . import utils
 from . import exceptions
 from . import config
 
+from datetime import datetime
+
+
+
+def get_duration(start, end):
+    try:
+        (dt, micro) = datetime.fromtimestamp(start).strftime('%H:%M:%S.%f').split('.')
+        start = "%s.%02d" % (dt, int(micro) / 10000)
+    except:
+        start = "?"
+    try:
+        (dt, micro) = datetime.fromtimestamp(end).strftime('%H:%M:%S.%f').split('.')
+        end = "%s.%02d" % (dt, int(end) / 10000)
+    except:
+        start = "?"
+    return "{} - {}".format(start, end)
 
 class Info(object):
 
@@ -180,7 +196,7 @@ class AniInfo(object):
                 "preview": info.thumbnail_preview,
                 "episode": info.episode,
                 "url": info.anime_url,
-                "duration": f"{info.start} - {info.end}"
+                "duration": get_duration(info.start, info.end)
             })
         return animes
 
