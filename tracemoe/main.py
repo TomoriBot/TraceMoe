@@ -84,23 +84,24 @@ class MatchInfo(object):
         if(isinstance(data, dict)):
             self._from = data.get("from", None)
             self._to = data.get("to", None)
-            self.anilist_id = data.get("anilist_id", None)
+            self.anilist_id = data.get("anilist_id", "?")
             self.i = data.get("i", None)
-            self.start = data.get("start", None)
-            self.end = data.get("end", None)
+            self.start = data.get("start", 0)
+            self.end = data.get("end", 0)
             self.file = data.get("file", None)
-            self.episode = data.get("episode", None)
+            self.episode = data.get("episode", "?")
             self.expires = data.get("expires", None)
             self.token = data.get("token", None)
             self.tokenThumb = data.get("tokenthumb", None)
             self.diff = data.get("diff", None)
-            self.title = data.get("title", None)
-            self.title_native = data.get("title_native", None)
-            self.title_chinese = data.get("title_chinese", None)
-            self.title_english = data.get("title_english", None)
-            self.title_romaji = data.get("title_romaji", None)
+            self.title = data.get("title", "?")
+            self.title_native = data.get("title_native", "?")
+            self.title_chinese = data.get("title_chinese", "?")
+            self.title_english = data.get("title_english", "?")
+            self.title_romaji = data.get("title_romaji", "?")
             self.is_adult = data.get("is_adult", None)
             self.t = data.get("t", None)
+            self.anime_url = f"https://anilist.co/anime/{self.anilist_id}"
             self.thumbnail_preview = f"{self.host['main']}/thumbnail.php?anilist_id={self.anilist_id}&file={utils.urlEncode(self.file)}&t={self.t}&token={self.tokenThumb}"
             self.video_preview = f"{self.host['main']}/{self.anilist_id}/{utils.urlEncode(self.file)}?start={self.start}&end={self.end}&token={self.token}"
             self.info = None
@@ -165,6 +166,23 @@ class AniInfo(object):
                                  
     def getAllInfo(self):
         return [MatchInfo(data) for data in self.data["docs"]]
+                                 
+    def getAnimes(self):
+        animes = []
+        for info in self.getAllInfo():
+            info.getInfo()
+            animes.append({
+                "title": info.title,
+                "titles": {
+                    "english": info.title_english,
+                    "romaji": info.title_romaji
+                },
+                "preview": info.thumbnail_preview,
+                "episode": info.episode,
+                "url": info.anime_url,
+                "duration": f"{info.start} - {info.end}"
+            })
+        return animes
 
 
 class Search(AniInfo):
