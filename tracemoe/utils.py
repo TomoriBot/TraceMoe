@@ -76,8 +76,8 @@ def downloadFile(url, temp_path="temp.dat", saveFile=True, **kwargs):
             notContentLength = True
             index = 1
         with sendGet(url, headers=headers, timeout=timeout) as fp:
-            if not notContentLength:
-                print(f"Downloading file with size: {(contentLength/1024/1024):.3f} MB")
+#             if not notContentLength:
+#                 print(f"Downloading file with size: {(contentLength/1024/1024):.3f} MB")
             for chunk in fp.iter_content(chunk_size=1024*100):
                 __b += chunk
                 if notContentLength:
@@ -93,7 +93,7 @@ def downloadFile(url, temp_path="temp.dat", saveFile=True, **kwargs):
                     sys.stdout.flush()
         printData = "Download finished."
         padLen = printLen - len(printData)
-        print(f"{printData}{' '*padLen}")
+#         print(f"{printData}{' '*padLen}")
         if saveFile:
             with open(temp_path, 'wb+') as fp:
                 fp.write(__b)
